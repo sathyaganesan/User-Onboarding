@@ -5,13 +5,13 @@ const UserCard = (props) => {
   return (
     <div>
           <h2>User Card</h2>
-          {/* {props.userAttr.map(item => (
-              <div key = {item.id}>
+          {props.userAttr.map(item => (
+              <div className = "card_style" >
                   <h3>{item.name}</h3>
                   <p>{item.email}</p>
                   <p>{item.role}</p>
                 </div>
-          ))} */}
+          ))}
     </div>
   );
 };

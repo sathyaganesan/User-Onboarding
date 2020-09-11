@@ -5,12 +5,25 @@ import Form from "./Form";
 import UserCard from "./UserCard";
 
 function App() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    terms: "",
-  });
+
+  const [userstate, setUserstate] = useState([
+    {
+      name: "Sathya",
+      email: "sathyag@gmail.com",
+      password: "password",
+      role: "Developer"
+    }
+  ]);
+
+  const addNewUser = (formData) => {
+    const newUser = {
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+      role: formData.role
+    }
+    setUserstate([...userstate, newUser]);
+  }
 
   return (
     <div className="App">
@@ -29,8 +42,8 @@ function App() {
         </a>
       </header> */}
       <h1> User Onboarding Form </h1>
-      <Form formattr={form}/>
-      <UserCard userAttr = {form}/>
+      <Form formAttr = {addNewUser} />
+      <UserCard userAttr = {userstate}/>
     </div>
   );
 }

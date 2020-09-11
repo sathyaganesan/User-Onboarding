@@ -26,7 +26,7 @@ const Form = (props) => {
     role: "",
     terms: ""
     })
-    // validaform variable was not working 
+    
     const validate = e => {
         yup.reach(formSchema, e.target.name)
             .validate(e.target.value)
@@ -42,7 +42,8 @@ const Form = (props) => {
 
   const formSubmit = (e) => {
       e.preventDefault();
-    //   props.formattr(formstate);
+      props.formAttr(formstate);
+      setFormstate({ name: "", email: "", password: "", role: "" });
       console.log("form Submitted");
       axios.post(`https://reqres.in/api/users`, formstate)
           .then(res => console.log(res))
@@ -65,7 +66,7 @@ const Form = (props) => {
         <input type="text" name="name" id = "name" value = {formstate.name} onChange={changeHandler} /></p>
               
         <p><label htmlFor="email">E-mail:
-            {/* {errorstate.email.length > 0 ? (<p>{errorstate.email}</p>) : null} */}
+            {/* {errorstate.email.length > 0 ? <p>{errorstate.email}</p> : null} */}
               </label>
         <input type="email" name="email" id = "email" value = {formstate.email} onChange={changeHandler} /></p>
               
